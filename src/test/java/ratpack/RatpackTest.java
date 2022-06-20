@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,11 +16,8 @@ import org.junit.Test;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.inject.Inject;
 
 import io.netty.handler.codec.http.HttpHeaderNames;
-import ratpack.handler.BalanceHandler;
-import ratpack.handler.LoginHandler;
 import ratpack.http.client.ReceivedResponse;
 import ratpack.http.client.RequestSpec;
 import ratpack.model.Balance;
@@ -30,12 +28,6 @@ import ratpack.test.http.TestHttpClient;
 
 public class RatpackTest {
 
-	@Inject
-	LoginHandler handler;
-
-	@Inject
-	BalanceHandler bHandler;
-
 	private final CloseableApplicationUnderTest aut = new MainClassApplicationUnderTest(Application.class);
 	private final TestHttpClient httpClient = aut.getHttpClient();
 
@@ -44,6 +36,14 @@ public class RatpackTest {
 	@After
 	public void tearDown() throws Exception {
 		aut.close();
+	}
+	
+	@Test
+	public void testExample() {
+		URI uri = aut.getAddress();
+		
+		ReceivedResponse response = httpClient.get(uri.getPath());
+		assertEquals(200, response.getStatusCode());
 	}
 
 	@Test

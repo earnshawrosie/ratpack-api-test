@@ -2,3 +2,7 @@
 /.project
 target/*
 /.settings
+build/*
+build/reports/*
+build/tmp/*
+.gradle/*
