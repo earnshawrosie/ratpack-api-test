@@ -10,7 +10,6 @@ import com.google.inject.Inject;
 
 import ratpack.error.UserDataException;
 import ratpack.exec.Promise;
-import ratpack.handling.Context;
 import ratpack.model.Transaction;
 import ratpack.model.User;
 
@@ -25,9 +24,7 @@ public class TransactionsService {
 	@Inject
 	private UserService userService;
 
-	public Promise<List<Transaction>> getTransactions(Context ctx) throws UserDataException {
-		final UserProfile profile = ctx.get(UserProfile.class);
-	
+	public Promise<List<Transaction>> getTransactions(final UserProfile profile) throws UserDataException {
 		LOGGER.info("Get transactions for user " + profile.getId());
 		Promise<User> userPromise = userService.getUser(profile.getId());
 		return userPromise.map(u -> u.getTransactions());

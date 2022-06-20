@@ -32,7 +32,7 @@ public class LoginHandler implements Handler {
 		LOGGER.info("Handling Login Request");
 		try {
 			final User user = loginService.login();
-			final String jwt = jwtService.generate(context, user);
+			final String jwt = jwtService.generate(user);
 			LOGGER.info("Logged in user: " + user.getId());
 			context.render(Jackson.json(jwt));
 		} catch (BaseApplicationException exc) {

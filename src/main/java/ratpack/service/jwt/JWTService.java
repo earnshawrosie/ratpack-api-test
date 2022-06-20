@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
 
-import ratpack.handling.Context;
 import ratpack.model.User;
 
 /**
@@ -30,7 +29,7 @@ public class JWTService {
 		this.authenticator = jwtAuthenticator;
 	}
 
-	public String generate(Context context, User user) {
+	public String generate(User user) {
 		LOGGER.info("Generating jwt for user " + user);
 		BasicUserProfile profile = new BasicUserProfile();
 		profile.build(user.getId(), null);

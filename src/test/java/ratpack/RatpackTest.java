@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,20 +31,12 @@ public class RatpackTest {
 	private final TestHttpClient httpClient = aut.getHttpClient();
 
 	private static final BigDecimal toSpend = new BigDecimal("4.2589");
-
+	
 	@After
 	public void tearDown() throws Exception {
 		aut.close();
 	}
 	
-	@Test
-	public void testExample() {
-		URI uri = aut.getAddress();
-		
-		ReceivedResponse response = httpClient.get(uri.getPath());
-		assertEquals(200, response.getStatusCode());
-	}
-
 	@Test
 	public void redirectsToIndexHtml() {
 		final ReceivedResponse response = httpClient.get();

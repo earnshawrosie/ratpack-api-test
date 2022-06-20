@@ -1,5 +1,6 @@
 package ratpack.handler;
 
+import org.pac4j.core.profile.UserProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +28,7 @@ public class BalanceHandler implements Handler {
 	public void handle(Context context) {
 		LOGGER.info("Handling Balance Request");
 		try {
-			final Promise<Balance> balancePromise = balanceService.getBalance(context);
+			final Promise<Balance> balancePromise = balanceService.getBalance(context.get(UserProfile.class));
 			balancePromise.then(b -> context.render(Jackson.json(b)));
 		} catch (BaseApplicationException exc) {
 			LOGGER.info("Exception handling Balance Request " + exc.getMessage());

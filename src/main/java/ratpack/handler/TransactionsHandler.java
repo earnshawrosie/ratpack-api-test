@@ -2,6 +2,7 @@ package ratpack.handler;
 
 import java.util.List;
 
+import org.pac4j.core.profile.UserProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,7 +30,7 @@ public class TransactionsHandler implements Handler {
 	public void handle(Context context) {
 		LOGGER.info("Handling Transactions Request");
 		try {
-			final Promise<List<Transaction>> promise = txService.getTransactions(context);
+			final Promise<List<Transaction>> promise = txService.getTransactions(context.get(UserProfile.class));
 			promise.then(t -> context.render(Jackson.json(t)));
 		} catch (UserDataException exc) {
 			LOGGER.info("Exception handling Transactions Request " + exc.getMessage());

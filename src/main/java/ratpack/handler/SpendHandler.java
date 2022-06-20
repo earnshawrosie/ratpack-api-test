@@ -1,5 +1,6 @@
 package ratpack.handler;
 
+import org.pac4j.core.profile.UserProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +28,7 @@ public class SpendHandler implements Handler {
 		LOGGER.info("Handling Spend Request");
 		context.parse(Jackson.fromJson(Transaction.class)).then(t -> {
 			try {
-				balanceService.spend(context, t);
+				balanceService.spend(context.get(UserProfile.class), t);
 				LOGGER.info("Completed Spend Request");
 				context.getResponse().status(200).send();
 			} catch (UserDataException exc) {
