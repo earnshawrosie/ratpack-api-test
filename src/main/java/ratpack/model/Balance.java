@@ -16,7 +16,11 @@ public class Balance implements Serializable {
 	
 	private AtomicReference<BigDecimal> balance = new AtomicReference<>();
 	private String currency;
-	
+
+	public Balance() {
+		super();
+	}
+
 	public Balance(BigDecimal balance, String currency) {
 		super();
 		this.balance.set(balance);
