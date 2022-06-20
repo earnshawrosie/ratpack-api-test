@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ratpack</groupId>
+	<artifactId>ratpack-api-test</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<pac4jVersion>5.1.4</pac4jVersion>
+		<ratpackPac4jVersion>4.0.0</ratpackPac4jVersion>
+		<ratpackVersion>1.9.0</ratpackVersion>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>io.ratpack</groupId>
+			<artifactId>ratpack-core</artifactId>
+			<version>${ratpackVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.ratpack</groupId>
+			<artifactId>ratpack-guice</artifactId>
+			<version>${ratpackVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.ratpack</groupId>
+			<artifactId>ratpack-session-redis</artifactId>
+			<version>${ratpackVersion}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>5.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>4.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.pac4j</groupId>
+			<artifactId>ratpack-pac4j</artifactId>
+			<version>${ratpackPac4jVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.pac4j</groupId>
+			<artifactId>pac4j-jwt</artifactId>
+			<version>${pac4jVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.pac4j</groupId>
+			<artifactId>pac4j-http</artifactId>
+			<version>${pac4jVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.pac4j</groupId>
+			<artifactId>pac4j-core</artifactId>
+			<version>${pac4jVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.ratpack</groupId>
+			<artifactId>ratpack-test</artifactId>
+			<version>${ratpackVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
+</project>
